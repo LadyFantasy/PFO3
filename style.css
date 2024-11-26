@@ -38,7 +38,7 @@ h2 {
   width: 100%;
   max-width: 40rem;
   text-align: center;
-  color: rgba(51, 99, 255, 0.884);
+  color: rgba(79, 120, 255, 0.884);
 }
 
 h2 {
@@ -46,14 +46,15 @@ h2 {
   ;
 }
 
-.ejs_title, .text{
-  color:rgb(200, 141, 255)
+.ejs_title,
+.text {
+  color: rgb(200, 141, 255)
 }
 
 .ejs_container {
   margin-top: 3rem;
   width: 100%;
-  
+
 }
 
 .text {

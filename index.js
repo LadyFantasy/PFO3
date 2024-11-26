@@ -96,10 +96,10 @@ function contarPalabras(cadena) {
     const cantidadPalabras = palabras.length;
 
     salida2.textContent = `La frase tiene ${cantidadPalabras} palabras`;
-    return cantidadPalabras; // Devuelve la cantidad de palabras
+    return cantidadPalabras; 
   } else {
     salida2.textContent = "No ingresó ninguna frase";
-    return 0; // Retorna 0 si no hay palabras
+    return 0; 
   }
 }
 
@@ -190,8 +190,8 @@ function esPalindromo(texto) {
   const limpio = texto
     .toLowerCase()
     .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "") // Elimina los acentos
-    .replace(/[^a-záéíóúñ]/g, ""); // Elimina caracteres no alfabéticos
+    .replace(/[\u0300-\u036f]/g, "") 
+    .replace(/[^a-záéíóúñ]/g, ""); 
   return limpio === limpio.split("").reverse().join("");
 }
 

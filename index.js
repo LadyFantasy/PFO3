@@ -29,6 +29,9 @@ function ocultar() {
 
 document.addEventListener("DOMContentLoaded", ocultar);
 
+/* Quise que los cuadros de resultado tuvieran borde, pero este se veía aunque no tuvieran contenido. Por eso armé una función que los elimina del DOM si están vacíos. Esta se llama al cargar la página y al finalizar cada EventListener*/
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Ejercicio 1
@@ -72,6 +75,8 @@ mostrarPorConsola(
   datos => calculoAreaRect(datos[0], datos[1])
 );
 console.log("**********************************************************************");
+
+/* Lo que hace la función es simple. Lo único en lo que se me dificultó fue en validar que los valores fueran números */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Ejercicio 2
@@ -126,6 +131,8 @@ mostrarPorConsola(
 
 console.log("**********************************************************************");
 
+/* La dificultad de este ejercicio es en limpiar la frase antes de contar las palabras y buscar regex que validen por dónde se va separando. Después tuve que probar varias cosas distintas para que el cuadro de resultado no se mostrara al cargar la página, porque la hacía a pesar de la función que definí antes. */
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Ejercicio 3
 console.log("EJERCICIO 3");
@@ -167,6 +174,8 @@ mostrarPorConsola(
 );
 
 console.log("**********************************************************************");
+
+/* Sabía que la mejor forma de invertir una cadena era hacer algo como texto.split("").reverse().join(""). La parte más difícil, como en todos los ejercicios es el manejo del DOM. */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Ejercicio 4
@@ -211,6 +220,8 @@ mostrarPorConsola("EJERCICIO 4", ["Neuquén", "filosofía", "anilina"], esPalind
 
 console.log("**********************************************************************");
 
+/* Ya había hecho funciones para detectar palíndromos y sabía que una de las formas era invertir la frase y compararla con la original. Eso fue lo que hice, pero antes debía normalizarla para sacarle mayúsculas y tildes para que la comparación diera verdadera, así que busqué cómo eran las expresiones regulares para lograrlo. */
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Ejercicio 5
 console.log("EJERCICIO 5");
@@ -238,10 +249,8 @@ function manejarEdadCanina() {
 }
 
 btnEdadCanina.addEventListener("click", event => {
-
     manejarEdadCanina();
     ocultar();
-  
 });
 
 edadPerroInput.addEventListener("keydown", event => {
@@ -267,3 +276,6 @@ resultPromt.addEventListener("click", () => {
 });
 
 console.log("**********************************************************************");
+
+
+/* En este ejercicio, lo que más complicado me pareció fue separar lo que entraba por input, loque entraba por prompt y lo que se mostraba en consola. Tuve que probar varias cosas y reorganizar las funciones y los events listeners para que no se pisaran las distintas funcionalidades */

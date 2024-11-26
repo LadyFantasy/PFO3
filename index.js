@@ -96,9 +96,10 @@ function contarPalabras(cadena) {
     const cantidadPalabras = palabras.length;
 
     salida2.textContent = `La frase tiene ${cantidadPalabras} palabras`;
+    return cantidadPalabras; // Devuelve la cantidad de palabras
   } else {
     salida2.textContent = "No ingresó ninguna frase";
-    return 0;
+    return 0; // Retorna 0 si no hay palabras
   }
 }
 

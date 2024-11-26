@@ -13,27 +13,63 @@
   scroll-behavior: smooth
 }
 
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(173, 232, 255, 0.699);
+}
+
 .container {
-  padding: 4rem;
+  margin: 2rem 0;
+  border-radius: 40px;
+  width: 100%;
+  max-width: 50rem;
+  padding: 4rem 8rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
- 
+  align-content: center;
+  background-color: rgb(255, 255, 249);
+}
+
+h1,
+h2 {
+  width: 100%;
+  max-width: 40rem;
+  text-align: center;
+  color: rgba(51, 99, 255, 0.884);
+}
+
+h2 {
+  color: rgb(255, 146, 200);
+  ;
+}
+
+.ejs_title, .text{
+  color:rgb(173, 86, 255)
 }
 
 .ejs_container {
   margin-top: 3rem;
+  width: 100%;
+  
 }
 
 .text {
   margin: .5rem 0;
 }
 
-.result{
+.result {
   margin-top: 1rem;
-  font-size: 1.5rem;
-  color: rgb(73, 73, 73);
+  /* font-size: 1.5rem; */
+  color: rgb(255, 146, 200);
+  border: 3px solid rgb(255, 146, 200);
+  width: fit-content;
+  padding: .8rem;
+  border-radius: 5px;
 }
+
 input {
   all: unset;
   display: inline-block;
@@ -58,14 +94,14 @@ input:focus {
   display: inline-block;
   cursor: pointer;
   padding: .8rem;
-  color: rgba(12, 68, 255, 0.767);
+  color: rgba(12, 69, 255, 0.63);
   font-weight: 700;
   border-radius: 5px;
-  border: 2px solid rgba(12, 68, 255, 0.767);
+  border: 3px solid rgba(12, 69, 255, 0.63);
 }
 
 .btn_result:focus {
   outline: none;
   color: white;
-  background-color: rgba(12, 68, 255, 0.767);
+  background-color: rgba(12, 69, 255, 0.63);
 }

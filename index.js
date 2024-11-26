@@ -11,26 +11,55 @@ function mostrarPorConsola(ejercicio, datos, funcion) {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/* FUNCIÓN QUE OCULTA LOS PÁRRAFOS DE RESULTADOS ANTES DE EJECUTARSE LAS FUNCIONES */
+function ocultar() {
+  const results = document.querySelectorAll(".result");
+
+  results.forEach(element => {
+    if (
+      element.textContent.trim() === "" ||
+      element.textContent.trim() === "No ingresó ninguna frase"
+    ) {
+      element.style.display = "none";
+    } else {
+      element.style.display = "block";
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", ocultar);
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // Ejercicio 1
 console.log("EJERCICIO 1");
 
+
 const btnRect = document.querySelector("#resultBtn");
 const salida1 = document.querySelector("#salida1");
+const longInput = document.querySelector("#long");
+const anchoInput = document.querySelector("#ancho");
 
 function calculoAreaRect(longitud, ancho) {
   return longitud * ancho;
 }
 
 btnRect.addEventListener("click", () => {
-  const longInput = parseFloat(document.querySelector("#long").value);
-  const anchoInput = parseFloat(document.querySelector("#ancho").value);
+  const longitud = parseFloat(longInput.value);
+  const ancho = parseFloat(anchoInput.value);
 
-  if (!isNaN(longInput) && !isNaN(anchoInput)) {
-    const resultado = calculoAreaRect(longInput, anchoInput);
+  if (!isNaN(longitud) && !isNaN(ancho)) {
+    const resultado = calculoAreaRect(longitud, ancho);
     salida1.textContent = `El área del rectángulo es: ${resultado}`;
   } else {
-    salida1.textContent = "Ingrese un valor numérico válido.";
+    salida1.textContent = "Ingrese un valor numérico válido";
   }
+    
+  
+  longInput.value = "";
+  anchoInput.value = "";
+  
+  ocultar();
 });
 
 mostrarPorConsola(
@@ -63,22 +92,24 @@ function contarPalabras(cadena) {
 
     salida2.textContent = `La frase tiene ${cantidadPalabras} palabras`;
   } else {
-    salida2.textContent = "Ingrese una frase";
+    salida2.textContent = "No ingresó ninguna frase";
     return 0;
   }
 }
 
-// Evento al hacer clic en el botón
 resultCadena1.addEventListener("click", () => {
   contarPalabras(cadena1.value);
   cadena1.value = "";
+  salida2.textContent.trim() = "";
+  ocultar();
 });
 
-// Evento cuando se presiona Enter
 cadena1.addEventListener("keydown", event => {
   if (event.key === "Enter") {
     contarPalabras(cadena1.value);
     cadena1.value = "";
+    salida2.textContent.trim() = "";
+    ocultar();
   }
 });
 
@@ -113,15 +144,19 @@ const ejecutarInvertirCadena = () => {
     const textoInvertido = invertirCadena(texto);
     salida3.textContent = `La cadena invertida es: "${textoInvertido}"`;
   } else {
-    salida3.textContent = "Ingrese una cadena de texto.";
+    salida3.textContent = "Ingrese una cadena de texto";
   }
   cadena2.value = "";
 };
 
-resultCadena2.addEventListener("click", ejecutarInvertirCadena);
+resultCadena2.addEventListener("click", event => {
+  ejecutarInvertirCadena();
+  ocultar();
+});
 cadena2.addEventListener("keydown", event => {
   if (event.key === "Enter") {
     ejecutarInvertirCadena();
+    ocultar();
   }
 });
 
@@ -154,19 +189,21 @@ const ejecutarEsPalindromo = () => {
   const texto = cadena4.value.trim();
   if (texto) {
     const esPal = esPalindromo(texto);
-    salida4.textContent = esPal
-      ? `"${texto}" es un palíndromo.`
-      : `"${texto}" no es un palíndromo.`;
+    salida4.textContent = esPal ? `"${texto}" es un palíndromo` : `"${texto}" no es un palíndromo`;
   } else {
-    salida4.textContent = "Ingrese una palabra.";
+    salida4.textContent = "Ingrese una palabra";
   }
   cadena4.value = "";
 };
 
-resultCadena4.addEventListener("click", ejecutarEsPalindromo);
+resultCadena4.addEventListener("click", () => {
+  ejecutarEsPalindromo();
+  ocultar();
+});
 cadena4.addEventListener("keydown", event => {
   if (event.key === "Enter") {
     ejecutarEsPalindromo();
+    ocultar();
   }
 });
 
@@ -181,6 +218,7 @@ console.log("EJERCICIO 5");
 const btnEdadCanina = document.querySelector("#resultEdadCanina");
 const edadPerroInput = document.querySelector("#edadPerro");
 const salida5 = document.querySelector("#salida5");
+const resultPromt = document.querySelector("#resultPrompt");
 
 function edadCanina(edadHumana) {
   if (!isNaN(edadHumana) && edadHumana > 0) {
@@ -199,23 +237,33 @@ function manejarEdadCanina() {
   edadPerroInput.value = "";
 }
 
-btnEdadCanina.addEventListener("click", manejarEdadCanina);
+btnEdadCanina.addEventListener("click", event => {
+
+    manejarEdadCanina();
+    ocultar();
+  
+});
 
 edadPerroInput.addEventListener("keydown", event => {
   if (event.key === "Enter") {
     manejarEdadCanina();
+    ocultar();
   }
 });
 
-//Manejo por consola (prompt)
-const edadHumanaPrompt = parseInt(prompt("Ingrese la edad de su perro en años humanos:"));
-if (!isNaN(edadHumanaPrompt) && edadHumanaPrompt > 0) {
-  console.log("Resultado del valor ingresado por Prompt: ");
-  console.log(edadCanina(edadHumanaPrompt));
-} else {
-  console.log("Ingrese una edad válida");
-}
-
 mostrarPorConsola("EJERCICIO 5", [3, 5, 7], edadCanina);
+
+//Manejo por consola (prompt)
+resultPromt.addEventListener("click", () => {
+  const edadHumanaPrompt = parseInt(prompt("Ingrese la edad de su perro en años humanos:"));
+  if (!isNaN(edadHumanaPrompt) && edadHumanaPrompt > 0) {
+    console.log("Resultado del valor ingresado por Prompt: ");
+    console.log(edadCanina(edadHumanaPrompt));
+    salida5.textContent = edadCanina(edadHumanaPrompt);
+    ocultar();
+  } else {
+    console.log("Ingrese una edad válida");
+  }
+});
 
 console.log("**********************************************************************");
